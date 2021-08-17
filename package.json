@@ -1,6 +1,6 @@
 {
     "name": "@egomobile/node-utils",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "description": "Library of utilities, which are compatible with Node.js 12 or later.",
     "main": "lib/index.js",
     "engines": {
@@ -54,7 +54,7 @@
         "README.md"
     ],
     "dependencies": {
-        "@egomobile/nodelike-utils": "^0.2.0",
+        "@egomobile/nodelike-utils": "^0.2.2",
         "@types/node": "^12.12.6"
     },
     "devDependencies": {
