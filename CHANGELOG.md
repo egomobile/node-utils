@@ -1,5 +1,9 @@
 # Change Log (@egomobile/node-utils)
 
+## 0.4.0
+
+- require at least [Node.js 16+](https://nodejs.org/en/blog/release/v16.0.0/) now
+
 ## 0.3.0
 
 - fix [readStream](https://egomobile.github.io/node-utils/modules/io.html#readStream) function

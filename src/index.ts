@@ -27,26 +27,29 @@ export function tick<TResult extends any = any>(
     action: (...args: any[]) => TResult | PromiseLike<TResult>,
     ...args: any[]
 ): Promise<TResult> {
-    if (typeof action !== 'function') {
-        throw new TypeError('func is no function');
+    if (typeof action !== "function") {
+        throw new TypeError("func is no function");
     }
 
     let tickFunc: TickFunc<TResult>;
-    if (action.constructor.name === 'AsyncFunction') {
+    if (action.constructor.name === "AsyncFunction") {
         tickFunc = (resolve, reject) => {
             try {
                 (action(...args) as any)
                     .then(resolve)
                     .catch(reject);
-            } catch (ex) {
+            }
+            catch (ex) {
                 reject(ex);
             }
         };
-    } else {
+    }
+    else {
         tickFunc = (resolve, reject) => {
             try {
                 resolve(action(...args) as any);
-            } catch (ex) {
+            }
+            catch (ex) {
                 reject(ex);
             }
         };
@@ -57,11 +60,12 @@ export function tick<TResult extends any = any>(
             process.nextTick(() => {
                 tickFunc(resolve, reject);
             });
-        } catch (ex) {
+        }
+        catch (ex) {
             reject(ex);
         }
     });
 }
 
-export * from './io';
-export * from './utils';
+export * from "./io";
+export * from "./utils";

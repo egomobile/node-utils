@@ -13,14 +13,14 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-import fs from 'fs';
-import path from 'path';
-import { readStream } from '..';
+import fs from "fs";
+import path from "path";
+import { readStream } from "..";
 
-const testFile = path.join(__dirname, 'test.txt');
+const testFile = path.join(__dirname, "test.txt");
 
-describe('readStream function', () => {
-    it('should read the whole data from test.txt as buffer', async () => {
+describe("readStream function", () => {
+    it("should read the whole data from test.txt as buffer", async () => {
         const stat = await fs.promises.stat(testFile);
         const stream = fs.createReadStream(testFile);
 

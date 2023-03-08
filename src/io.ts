@@ -30,24 +30,26 @@
  *
  * @returns {Promise<Buffer>} The promise with the buffer.
  */
-export function readStream(stream: NodeJS.ReadableStream, encoding: BufferEncoding = 'utf8'): Promise<Buffer> {
+export function readStream(stream: NodeJS.ReadableStream, encoding: BufferEncoding = "utf8"): Promise<Buffer> {
     const allChunks: Buffer[] = [];
 
     return new Promise<Buffer>((resolve, reject) => {
-        stream.once('error', reject);
+        stream.once("error", reject);
 
-        stream.on('data', (chunk: Buffer) => {
+        stream.on("data", (chunk: Buffer) => {
             try {
                 allChunks.push(chunk);
-            } catch (error) {
+            }
+            catch (error) {
                 reject(error);
             }
         });
 
-        stream.once('end', () => {
+        stream.once("end", () => {
             try {
                 resolve(Buffer.concat(allChunks));
-            } catch (error) {
+            }
+            catch (error) {
                 reject(error);
             }
         });

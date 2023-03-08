@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-import { tick } from '..';
+import { tick } from "..";
 
 function func1(a: number, b: number) {
     return a + b;
@@ -25,31 +25,36 @@ async function func2(a: number, b: number) {
     return a + b;
 }
 
-const func3 = (a: number, b: number) => a + b;
+const func3 = (a: number, b: number) => {
+    return a + b;
+};
 
-const func4 = async (a: number, b: number) => a + b;
+const func4 = async (a: number, b: number) => {
+    return a + b;
+};
 
-describe('asAsync() function', () => {
-    it.each([func1, func2, func3, func4])('should return async function, if input is a function', async (f) => {
+describe("asAsync() function", () => {
+    it.each([func1, func2, func3, func4])("should return async function, if input is a function", async (f) => {
         let sum!: number;
 
         let lastError: any;
         try {
             sum = await tick(f, 1, 2);
-        } catch (ex) {
+        }
+        catch (ex) {
             lastError = ex;
         }
 
         expect(lastError instanceof TypeError).toBe(false);
         expect(lastError).toBe(undefined);
 
-        expect(typeof sum).toBe('number');
+        expect(typeof sum).toBe("number");
         expect(sum).toBe(3);
         expect(sum).not.toBe(undefined);
     });
 
     it.each([
-        'TM+MK',
+        "TM+MK",
         {},
         [],
         5979,
@@ -57,20 +62,21 @@ describe('asAsync() function', () => {
         false,
         null,
         undefined
-    ])('should throw a TypeError, if input is not a function', async (val) => {
+    ])("should throw a TypeError, if input is not a function", async (val) => {
         let sum!: number;
 
         let lastError: any;
         try {
             sum = await tick(val as any, 1, 2);
-        } catch (ex) {
+        }
+        catch (ex) {
             lastError = ex;
         }
 
         expect(lastError instanceof TypeError).toBe(true);
         expect(lastError).not.toBe(undefined);
 
-        expect(typeof sum).not.toBe('number');
+        expect(typeof sum).not.toBe("number");
         expect(sum).not.toBe(3);
         expect(sum).toBe(undefined);
     });
