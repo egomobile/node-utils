@@ -1,5 +1,9 @@
 # Change Log (@egomobile/node-utils)
 
+## 0.5.0
+
+- separate CommonJS, ESM and UMD support
+
 ## 0.4.0
 
 - require at least [Node.js 16+](https://nodejs.org/en/blog/release/v16.0.0/) now
