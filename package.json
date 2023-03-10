@@ -1,13 +1,17 @@
 {
     "name": "@egomobile/node-utils",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "description": "Library of utilities, which are compatible with Node.js 12 or later.",
     "main": "lib/index.cjs.js",
     "module": "lib/index.esm.js",
+    "type": "module",
     "types": "lib/index.d.ts",
     "exports": {
-        "require": "./lib/index.cjs.js",
-        "import": "./lib/index.esm.js"
+        ".": {
+            "import": "./lib/index.esm.js",
+            "require": "./lib/index.cjs.js",
+            "types": "./lib/index.d.ts"
+        }
     },
     "engines": {
         "node": ">=16.0.0"
@@ -15,8 +19,8 @@
     "scripts": {
         "build": "del ./lib && rollup -c rollup.config.mjs",
         "docs:generate": "del ./docs && typedoc --out ./docs ./src",
-        "lint": "eslint -c .eslintrc.js --ext .ts src",
-        "lint:fix": "eslint --fix -c .eslintrc.js --ext .ts src",
+        "lint": "eslint -c .eslintrc.cjs --ext .ts src",
+        "lint:fix": "eslint --fix -c .eslintrc.cjs --ext .ts src",
         "sandbox": "nodemon --watch './sandbox.ts' --exec node -r ts-node/register --inspect=0.0.0.0:9229 ./sandbox.ts",
         "test": "jest --no-cache"
     },
@@ -60,7 +64,7 @@
         "README.md"
     ],
     "dependencies": {
-        "@egomobile/nodelike-utils": "^0.4.1"
+        "@egomobile/nodelike-utils": "^0.4.3"
     },
     "devDependencies": {
         "@egomobile/tsconfig": "5.0.0",

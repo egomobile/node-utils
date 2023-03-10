@@ -1,6 +1,6 @@
 # Change Log (@egomobile/node-utils)
 
-## 0.5.1
+## 0.5.2
 
 - separate CommonJS and ESM support
 
